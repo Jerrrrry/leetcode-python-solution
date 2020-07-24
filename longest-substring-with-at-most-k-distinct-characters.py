@@ -1,8 +1,7 @@
 class Solution:
     def lengthOfLongestSubstringKDistinct(self,s:str,k:int)->int:
         seen={}
-        j=0
-        res=0
+        j,res=0,0
         for i in range(len(s)):
             if s[i] not in seen:
                 seen[s[i]]=1
