@@ -2,6 +2,7 @@ class Solution:
     def maxPathSum(self,root:TreeNode)->int:
         def max_gain(node):
             nonlocal max_sum
+            ## max_sum would be used and assigned , need declare this 
             if not node:
                 return 0
             
