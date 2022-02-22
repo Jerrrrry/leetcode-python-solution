@@ -30,7 +30,7 @@ class Multi(BN):
                 return self.l.evaluate()*self.r.evaluate()
 class Divide(BN):
         def evaluate(self):
-                return self.l.evaluate()//self.r.evaluate()
+                return self.l.evaluate()/self.r.evaluate()
 
 class TreeBuilder(object):
     def buildTree(self, postfix: List[str]) -> 'Node':

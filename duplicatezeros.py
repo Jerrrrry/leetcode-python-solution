@@ -9,7 +9,6 @@ class Solution:
         if c[0]==0:
             return arr
         zeros=c[0]
-        print(zeros)
         n=len(arr)
         for i in range(len(arr)-1,-1,-1):
             print(i)

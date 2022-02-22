@@ -1,0 +1,9 @@
+{
+        "data":[
+                {"start": "USD", "to": "BTC", "bid": 99, "ask": 100},
+                {"start": "EUR", "to": "BTC", "bid": 115, "ask": 120},
+                {"start": "USD", "to": "ETH", "bid": 98, "ask": 100},
+                {"start": "EUR", "to": "ETH", "bid": 400, "ask": 420}
+            ]
+            
+}
