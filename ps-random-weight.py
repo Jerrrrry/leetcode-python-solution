@@ -40,3 +40,90 @@ class Solution:
         for i,prefix_sum in enumerate(self.prefix_sums):
             if r<prefix_sum:
                 return i
+
+"""
+RandomLoanAccess:
+
+get(customer_id) -> merchant:
+For a given customer id, returns the merchant a customer has received a loan for. O(1)
+
+put(customer_id,merchant) -> None: 
+Adds a customer id and merchant pair to the to the RandomLoanAccess. O(1)
+
+delete(customer_id) -> None: 
+removes a customer id and merchant pair from the RandomLoanAccess data structure. O(n)
+
+get_random_merchant() -> v: 
+Randomly returns a merchant from the data stored in RandomLoanAccess. O(1)
+
+{
+    "Sherry": "Amazon",
+    "Deon": "Amazon",
+    "Link": "Peloton",
+    "Ash": "Amazon"
+}
+P(Amazon) = 50%
+P(Peloton) = 50%
+"""
+
+prefix_sum=0
+prefix_sums=[]
+
+count=collections.defautdict(int)
+
+for x in self.data:
+    count[self.data[x]]+=1
+    
+for c in count:
+    preefix_sum+=count[c]
+    prefix_sums.append(prefix_sum)
+total=prefix_sum
+r=total*random.random()
+for i,p in enumerate(prefix_sums):
+    if r<p:
+        return i
+
+
+
+import random
+import collections
+class Solution:
+    def __init__(self):
+        # {customer -> merchant}, []
+        self.data=collections.defaultdict(str)
+        self.q=[]
+        
+        
+    def put(self,customer_id,merchant)->None:
+        if customer_id not in self.q:
+            self.q.append(customer_id)
+        self.data[customer_id]=merchant
+        
+    def get_random_merchant(self): 
+        # Need to use a list for random selection
+        r=random.randrange(0,len(self.q))
+        return self.data[self.q[r]]
+    
+    def get(self,customer_id)->str:
+        if customer_id in self.data:
+            return self.data[customer_id]
+        return None
+    
+    def delete(self,customer_id)->None:
+        if customer_id in self.data:
+            del self.data[customer_id]
+            self.q.remove(customer_id)
+            
+c=Solution()
+c.put('Sherry',"Amazon")
+c.put('yubin','Amazon')
+c.put('payton','Google')
+
+for _ in range(3):
+    print(c.get_random_merchant())
+        
+
+
+
+
+

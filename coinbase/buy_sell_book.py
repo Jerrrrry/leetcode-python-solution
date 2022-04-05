@@ -36,3 +36,8 @@ print(c.match(300,True))
 
 print(c.match(100,False))
 print(c.match(150,False))
+
+class Match:
+        def __init__(self):
+                self.buy=[]
+                self.sell=[]

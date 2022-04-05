@@ -1,5 +1,6 @@
 #https://leetcode.com/discuss/interview-question/1647092/coinbase-virtual-on-site-interview-questions
 #practice https://leetcode.com/problems/path-with-maximum-probability/
+#https://leetcode.com/discuss/interview-question/1450835/Currency-Conversion-oror-Need-JavaScript-Solution/1076988
 # Bid: The bid price refers to the highest price a buyer will pay for a commodity or security.
 # Ask: The ask price refers to the lowest price a seller will accept for a commodity or security.
 # If A is purchasing BTC for USD from B, B will "ask" certain price and A will agree to pay certain amount of USD ("bid") for 1 BTC.
@@ -19,14 +20,12 @@ def bellman_ford(start, end, graph):
 
     paths[start] = 0
     n = len(paths)
-    print(edges)
     i = 0
     while i < n:
         for edge in edges:
             src, tgt = edge[0], edge[1]
             paths[tgt] = min(paths[tgt], graph[src][tgt] + paths[src])
         i += 1
-    print(paths)
     return paths[end]
 
 g = {
@@ -39,22 +38,20 @@ g = {
 
 #print(bellman_ford('A', 'C', g))
 
-data=open("data.json")
+data=open("demo.json")
 
 d=json.load(data)
 
 r=collections.defaultdict()
 
 for x in d['data']:
-        src,target=x['id'].split('-')
-        print('src:'+src)
-        print('target: '+target)
+        src,target=x['start'],x['to']
         if src not in r:
                 r[src]={}
-        r[src][target]=float(x['asks'][0][1])
+        r[src][target]=float(x['ask'])
         if target not in r:
                 r[target]={}
-        r[target][src]=1/(float(x['bids'][0][1]))
-print(r)
+        r[target][src]=1/(float(x['bid']))
+
 
 print(bellman_ford('USD', 'BTC', r))

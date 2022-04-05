@@ -1,6 +1,7 @@
 from abc import ABC,abstractmethod
 from re import T
 from typing import List
+import operator
 class Iterator(ABC):
         @abstractmethod
         def hasNext(self)->bool:pass
@@ -9,19 +10,21 @@ class Iterator(ABC):
 
 class NormalIterator(Iterator):
         def __init__(self,nums:list):
-                self.data=[-1]+nums
+                self.nums=nums
                 self.o=0
-                self.e=len(nums)
+                self.e=len(nums)-1
+                self.c=0
 
         def hasNext(self)->bool:
-                if self.o+1<=self.e:
+                if self.o+self.c<=self.e:
                         return True
                 else:
                         return False 
         def getNext(self)->int:
                 if self.hasNext():
-                        self.o+=1
-                        return self.data[self.o]
+                        index=self.o+self.c
+                        self.c+=1
+                        return self.nums[index]
                 else:
                         return -1
 class JumpIterator(Iterator):
@@ -57,6 +60,27 @@ class JumpIterator(Iterator):
                         return self.data[self.o]
                 else:
                         return -1
+class SkipIterator(Iterator):
+        def __init__(self,nums:list,start:int,end:int,step:int):
+                if step<0:
+                        self.op=operator.ge
+                else:
+                        self.op=operator.le
+                self.step=step
+                self.start=start
+                self.end=end
+                self.c=0
+                self.nums=nums
+
+        def hasNext(self):
+                if self.op(self.start+self.c*self.step,self.end):
+                        return True
+                else:
+                        return False
+        def getNext(self):
+                index=self.start+self.c*self.step 
+                self.c+=1
+                return self.nums[index]
 class Solution:
         def __init__(self,nums:list):
                 self.data=[-1]+nums
@@ -75,15 +99,11 @@ class Solution:
                 else:
                         return -1
 
-data=[1,2,4,5,6,7,8,98,100]
-print('this is normal iterator')
-c=NormalIterator(data)
-while c.hasNext():
-        print(c.getNext())
+data=[1,2,4,5,6,7,8,98,100,200,300]
 
 print('---------------')
 
-j=JumpIterator(data,2,8,2)
+j=SkipIterator(data,2,8,-2)
 
 
 while j.hasNext():
