@@ -13,8 +13,11 @@ Functions of a Kernel
 Following are the functions of a Kernel:
 
 Access Computer resource: A Kernel can access various computer resources like the CPU, I/O devices and other resources. It acts as a bridge between the user and the resources of the system.
+
 Resource Management: It is the duty of a Kernel to share the resources between various process in such a way that there is uniform access to the resources by every process.
+
 Memory Management: Every process needs some memory space. So, memory must be allocated and deallocated for its execution. All these memory management is done by a Kernel.
+
 Device Management: The peripheral devices connected in the system are used by the processes. So, the allocation of these devices is managed by the Kernel.
 
 type of kernel 
