@@ -3,21 +3,28 @@
 #     def __init__(self, val=0, next=None):
 #         self.val = val
 #         self.next = next
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
 class Solution:
     def mergeKLists(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:
-        data=[]
-        ans=ListNode(0)
-        tmp=ans
+        q=[]
         
-        for l in lists:
-            t=l
-            while t:
-                heapq.heappush(data,t.val)
-                t=t.next
-                
-        while data:
-            tmp.next=ListNode(heapq.heappop(data))
-            tmp=tmp.next
+        for i in range(len(lists)):
+            if lists[i]:
+                heapq.heappush(q,(lists[i].val,i))
             
-        return ans.next
+        ans=res=ListNode(0)
+        while q:
+            v,i=heapq.heappop(q)
+            ans.next=ListNode(v)
+            ans=ans.next
+            lists[i]=lists[i].next
+            if lists[i]:
+                heapq.heappush(q,(lists[i].val,i))
                 
+        return res.next
+
+##tc  nlogk 

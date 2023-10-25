@@ -1,0 +1,19 @@
+Responsibilities
+
+Design, develop and maintain CI\\CD pipelines for integration and edge Kubernetes clusters
+Develop operational intelligence metric collection, distributed tracing, visualization, and reporting via Prometheus, Grafana, and related tooling
+Work with Backend and Full Stack engineers to co-develop GraphQL and REST apis to surface ChatLogs data for various users. Participate in the definition and management of SLIs, SLOs and error budgets for infrastructure and production services.
+
+Required Technical and Professional Expertise
+
+5+ Years Linux experience configuring, supporting, and optimizing
+2+ Years experience architecting, deploying, and supporting edge k8s environments.
+2+ years experience designing and supporting distributed systems.
+2+ years Experience in one of more languages such as Python, Java, Go
+
+Preferred Technical And Professional Expertise
+
+Familiarity with AWS DevOps (Roles, VPCs, S3, Terraform)
+Familiarity running distributed ML workloads in cluster orchestrated environments
+Experience building and supporting telemetry infrastructure (Grafana, Prometheus, and similar tools) Experience designing and implementing infrastructure as code pipelines
+2+ Years PubSub Experience (Kafka, SQS)

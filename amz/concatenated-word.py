@@ -31,7 +31,7 @@ class Another:
                                 t=check(s)
                                 if f in words and s in words:
                                         ans.append([f,s])
-                                elif f in words and len(t)>0:
+                                if f in words and len(t)>0:
                                         for x in t:
                                                 ans.append([f]+x)
 

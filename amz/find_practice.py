@@ -1,6 +1,4 @@
 import re
-from telnetlib import SE
-from termios import FF1
 class File:
     def __init__(self,name,size,type,isDirectory,files):
         self.name=name
